@@ -1,0 +1,38 @@
+.expense-list {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .expense-item {
+    background-color: #d6d8da;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: oblique;
+    color: #333;
+  }
+  
+  .expense-item:hover {
+    background-color: #e2e6ea;
+  }
+
+
+  .sort-button{
+    background-color: #8d7800; 
+    color: white;
+  }
+
+
+  .cancelled {
+    color: red;
+  }
+  

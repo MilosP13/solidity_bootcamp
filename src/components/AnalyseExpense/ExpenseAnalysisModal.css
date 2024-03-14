@@ -1,0 +1,58 @@
+.expense-analysis-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .category-select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .get-total-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .get-total-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .total-expense-info {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .close-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #c82333;
+  }
+  
