@@ -6,7 +6,7 @@ import './ExpenseList.css';
 const ExpenseList = ({ web3, account, factoryAddress }) => {
   const [expenses, setExpenses] = useState([]);
   const [selectedExpenseId, setSelectedExpenseId] = useState(null);
-  const [sortAscending, setSortAscending] = useState(true); // State to track sorting order
+  const [sortAscending, setSortAscending] = useState(true); // pratimo redosled sortiranja
 
   const loadExpenses = async () => {
     try {
@@ -15,10 +15,9 @@ const ExpenseList = ({ web3, account, factoryAddress }) => {
         factoryAddress
       );
 
-      // Fetch expenses from the contract for the current account
       const expensesFromContract = await expenseAdder.methods.getAllExpenses().call({ from: account });
 
-      // Update the state with the fetched expenses
+      // ovde cuvamo fetchovane expensove
       setExpenses(expensesFromContract.map(expense => ({ ...expense, price: Number(expense.price) })));
     } catch (error) {
       console.error("Error while loading expense list:", error);
@@ -26,7 +25,7 @@ const ExpenseList = ({ web3, account, factoryAddress }) => {
   };
 
   useEffect(() => {
-    // Load expenses when the component mounts or when web3 or account changes
+    // ucitaj sve expense kad se ucita stranica
     if (web3 && account) {
       loadExpenses();
     }
@@ -37,23 +36,23 @@ const ExpenseList = ({ web3, account, factoryAddress }) => {
   };
 
   const toggleSortOrder = () => {
-    setSortAscending(!sortAscending); // Toggle sorting order
-    // Sort expenses based on price
+    setSortAscending(!sortAscending); // da odradi sort
+    
     const sortedExpenses = [...expenses].sort((a, b) => {
       return sortAscending ? a.price - b.price : b.price - a.price;
     });
-    setExpenses(sortedExpenses); // Update state with sorted expenses
+    setExpenses(sortedExpenses); 
   };
 
   return (
     <div className="expense-list">
       <h1 className="expense-list-title">Expense Cost Tracker Dapp</h1>
-      <button className="sort-button" onClick={toggleSortOrder}>Sort by Price</button> {/* Button to toggle sorting order */}
+      <button className="sort-button" onClick={toggleSortOrder}>Sort by Price</button> 
       {expenses.length > 0 ? (
         expenses.map((expense) => (
           <div
             key={expense.id}
-            className={`expense-item ${expense.cancelled ? 'cancelled' : ''}`} // Apply 'cancelled' class if expense is cancelled
+            className={`expense-item ${expense.cancelled ? 'cancelled' : ''}`} // Odradi cancel
             onClick={() => openDetailsModal(expense.id)}
           >
             Expense {Number(expense.id)+1}: {expense.price.toString()} RSD - {new Date(Number(expense.date) * 1000).toLocaleDateString()}

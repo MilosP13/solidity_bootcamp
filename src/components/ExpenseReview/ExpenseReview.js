@@ -10,11 +10,11 @@ const ExpenseReview = ({ web3, account, expenseId, onClose, factoryAddress }) =>
       if (web3 && account && factoryAddress && expenseId!=null) {
         const expenseAdder = new web3.eth.Contract(ABI.abi, factoryAddress);
         
-        // Call getExpense with the expense ID
+        // dobijam expense po idju
         const infoOfExpense = await expenseAdder.methods.getExpense(expenseId).call({ from: account });
   
   
-        // Set the loaded expense details in state
+        // ucitaj sve exp
         setExpenseDetails(infoOfExpense);
       }
     } catch (error) {
@@ -27,11 +27,11 @@ const ExpenseReview = ({ web3, account, expenseId, onClose, factoryAddress }) =>
       if (web3 && account && factoryAddress && expenseId != null) {
         const expenseCanceler = new web3.eth.Contract(ABI.abi, factoryAddress);
   
-        // Call getExpense to check if the expense is already cancelled
+        // proveri da li je cancelovana
         const infoOfExpense = await expenseCanceler.methods.getExpense(expenseId).call({ from: account });
   
         if (infoOfExpense.cancelled) {
-          // Show window prompt if expense is already cancelled
+          // izbaci alert da je calcelovano
           window.alert("This expense has already been cancelled.");
         } else {
           const transactionParameters = {
@@ -46,7 +46,7 @@ const ExpenseReview = ({ web3, account, expenseId, onClose, factoryAddress }) =>
           });
   
           console.log("Transaction Hash:", txHash);
-          window.location.reload(); // Reload the page to reflect the cancelled expense
+          window.location.reload(); // Reload stranicu da se vidi da je cancel
         }
       }
     } catch (error) {

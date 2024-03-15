@@ -39,10 +39,9 @@ const AddExpenseForm = ({ onClose, web3, account, factoryAddress}) => {
           expenseData.price,
           expenseData.category,
           expenseData.description
-        ).encodeABI() // call to contract method
+        ).encodeABI() // zove metodu za tranzakciju
       };
 
-      // txHash is a hex string
       const txHash = await window.ethereum.request({
         method: 'eth_sendTransaction',
         params: [transactionParameters],
